@@ -81,7 +81,7 @@
         return res.json();
       })
       .then(function (info) {
-        if (!info || !info.Id) throw new Error("No es un servidor Jellyfin");
+        if (!info || !info.Id) throw new Error(t("notJellyfin"));
         return { url: base, name: info.ServerName || base, version: info.Version || "" };
       })
       .finally(function () { clearTimeout(timer); });
@@ -89,7 +89,7 @@
 
   function findServer(input) {
     var list = candidates(input);
-    if (!list.length) return Promise.reject(new Error("La dirección no es válida."));
+    if (!list.length) return Promise.reject(new Error(t("invalidAddress")));
     var probeable = list.filter(canProbe);
     if (!probeable.length) {
       // Can't verify from here; trust the most likely candidate.
@@ -98,7 +98,7 @@
     var i = 0;
     function next() {
       if (i >= probeable.length) {
-        return Promise.reject(new Error("No se encontró ningún servidor Jellyfin en esa dirección."));
+        return Promise.reject(new Error(t("notFound")));
       }
       return probe(probeable[i++]).catch(next);
     }
@@ -108,7 +108,7 @@
   function openServer(server) {
     save(LAST_KEY, server.url);
     showView("loading-view");
-    $("loading-text").textContent = "Abriendo " + server.name + "…";
+    $("loading-text").textContent = t("opening", { name: server.name });
     var token = {};
     pendingConnect = token;
     // Small delay so the user can still cancel an auto-connect.
@@ -134,7 +134,7 @@
     if (!servers.length) {
       var p = document.createElement("li");
       p.className = "empty";
-      p.textContent = "Aún no has añadido ningún servidor.";
+      p.textContent = t("noServers");
       ul.appendChild(p);
       return;
     }
@@ -148,8 +148,8 @@
       open.addEventListener("click", function () { openServer(s); });
       var del = document.createElement("button");
       del.className = "focusable btn remove";
-      del.textContent = "Quitar";
-      del.setAttribute("aria-label", "Quitar " + s.name);
+      del.textContent = t("remove");
+      del.setAttribute("aria-label", t("removeLabel", { name: s.name }));
       del.addEventListener("click", function () {
         removeServer(s.url);
         showView("servers-view");
@@ -164,7 +164,7 @@
     var input = $("server-input").value;
     $("add-error").textContent = "";
     showView("loading-view");
-    $("loading-text").textContent = "Buscando servidor…";
+    $("loading-text").textContent = t("searching");
     var token = {};
     pendingConnect = token;
     findServer(input).then(function (server) {

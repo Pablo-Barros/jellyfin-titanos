@@ -11,6 +11,7 @@ No es un proyecto oficial de Jellyfin.
 - Abre automáticamente el último servidor al iniciar.
 - Navegación con el mando (flechas, OK) y tecla Atrás (8 Philips / 461 JVC).
 - Diálogo de confirmación al salir desde la pantalla principal.
+- Interfaz en inglés y español según el idioma del televisor (inglés por defecto).
 
 ## Probar en local
 

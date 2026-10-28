@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=1920, initial-scale=1">
-<title>Jellyfin para Titan OS</title>
+<title>Jellyfin for Titan OS</title>
 <script src="https://sdk.titanos.tv/sdk/sdk.js" async></script>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -16,45 +16,46 @@
       <path fill="url(#g)" d="M256 196c-11 0-46 63-41 74s76 11 82 0-30-74-41-74zm0-150C190 46 24 345 56 410s368 64 400 0S322 46 256 46zm121 323c-21 42-221 42-242 0S226 110 256 110s142 217 121 259z"/>
     </svg>
     <h1>Jellyfin</h1>
-    <p class="tag">Cliente no oficial para Titan OS</p>
+    <p class="tag" data-i18n="tagline">Unofficial client for Titan OS</p>
   </header>
 
   <section id="servers-view" class="view">
-    <h2>Tus servidores</h2>
+    <h2 data-i18n="yourServers">Your servers</h2>
     <ul id="server-list" class="server-list"></ul>
-    <button id="add-server" class="focusable btn">+ Añadir servidor</button>
+    <button id="add-server" class="focusable btn" data-i18n="addServer">+ Add server</button>
   </section>
 
   <section id="add-view" class="view hidden">
-    <h2>Añadir servidor</h2>
-    <label for="server-input">Dirección del servidor</label>
+    <h2 data-i18n="addServerTitle">Add server</h2>
+    <label for="server-input" data-i18n="serverAddress">Server address</label>
     <input id="server-input" class="focusable" type="url" inputmode="url" autocomplete="off" spellcheck="false"
            placeholder="http://192.168.1.10:8096">
-    <p class="hint">Escribe la IP o el dominio de tu servidor Jellyfin. Si no indicas puerto se prueba el 8096.</p>
+    <p class="hint" data-i18n="hint">Enter the IP or domain of your Jellyfin server. Port 8096 is tried if none is given.</p>
     <p id="add-error" class="error" role="alert"></p>
     <div class="row">
-      <button id="connect" class="focusable btn primary">Conectar</button>
-      <button id="cancel-add" class="focusable btn">Cancelar</button>
+      <button id="connect" class="focusable btn primary" data-i18n="connect">Connect</button>
+      <button id="cancel-add" class="focusable btn" data-i18n="cancel">Cancel</button>
     </div>
   </section>
 
   <section id="loading-view" class="view hidden">
     <div class="spinner" aria-hidden="true"></div>
-    <p id="loading-text">Conectando…</p>
-    <button id="cancel-loading" class="focusable btn">Cancelar</button>
+    <p id="loading-text" data-i18n="connecting">Connecting…</p>
+    <button id="cancel-loading" class="focusable btn" data-i18n="cancel">Cancel</button>
   </section>
 </main>
 
 <div id="exit-dialog" class="dialog hidden" role="dialog" aria-modal="true" aria-labelledby="exit-title">
   <div class="dialog-box">
-    <h2 id="exit-title">¿Quieres salir?</h2>
+    <h2 id="exit-title" data-i18n="exitQuestion">Do you want to exit?</h2>
     <div class="row">
-      <button id="exit-yes" class="focusable btn primary">Salir</button>
-      <button id="exit-no" class="focusable btn">Cancelar</button>
+      <button id="exit-yes" class="focusable btn primary" data-i18n="exit">Exit</button>
+      <button id="exit-no" class="focusable btn" data-i18n="cancel">Cancel</button>
     </div>
   </div>
 </div>
 
+<script src="i18n.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
