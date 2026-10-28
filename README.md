@@ -23,4 +23,5 @@ Abre http://127.0.0.1:8765/ y usa las flechas, Intro y Escape (Atrás).
 
 ## Licencia
 
-Código bajo licencia MIT. El logotipo de Jellyfin pertenece al proyecto Jellyfin.
+Código bajo licencia MIT. El logotipo de Jellyfin es del proyecto Jellyfin
+([jellyfin-ux](https://github.com/jellyfin/jellyfin-ux)) y se usa bajo licencia CC BY-SA 4.0.
